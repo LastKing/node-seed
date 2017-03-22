@@ -16,5 +16,8 @@
     "express": "^4.15.2",
     "express-session": "^1.15.1",
     "ioredis": "^2.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
   }
 }

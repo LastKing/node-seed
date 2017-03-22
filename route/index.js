@@ -3,8 +3,8 @@
  */
 const express = require('express');
 const router = express.Router();
-const ioredis = require('ioredis');
-const redis = new ioredis();
+
+const Redis = require('../util/redis');
 
 router.get('/', function (req, res) {
   console.log(req.session.id);
@@ -14,11 +14,11 @@ router.get('/', function (req, res) {
 let number = 1;
 router.post('/', function (req, res) {
   if (req.body.flag == "true") {
-    redis.set('foo', 'bar' + number);
+    Redis.set('foo', 'bar' + number);
     number++;
   }
 
-  redis.get('foo', function (err, result) {
+  Redis.get('foo', function (err, result) {
     res.send({key1: "test", key2: result});
   });
 });
